@@ -33,14 +33,26 @@
             <li class="nav-item">
               <a class="nav-link {% if active == 'members' %} active{% endif %}" href="/groups/members">Members</a>
             </li>
+            {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
+                <a class="nav-link" href="{% url 'group_logout' %}">Logout</a>
               </li>
+              {% else %}
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'group_login' %}">Login</a>
+                </li>
+              {% endif %}
           </ul>
         </nav>
         <h3 class="text-muted">Django Groups</h3>
       </div>
-
+      {% if user.is_authenticated %}
+      <div class="container">
+          <div class="alert alert-success" role="alert">
+              You are logged in as <b>{{ user.username }}</b>. Welcome!
+            </div>
+      </div>
+      {% endif %}
     <div class="container">
         {% block content %}
         {% endblock %}

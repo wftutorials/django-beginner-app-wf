@@ -8,9 +8,9 @@
   <p class="lead">Creating groups with the Django Web framework and python. 
     To create a new group click the button below.</p>
   <p style="display: inline-block;"><a class="btn btn-lg btn-danger" href="{% url 'create_group' %}" role="button">
-    Create a New Group ( Method 1 )</a><br><br>
+    Create a New Group ( Manual )</a><br><br>
     <a class="btn btn-lg btn-success" href="{% url 'save_group' %}" role="button">
-      Create a New Group ( Method 2 )</a></p>
+      Create a New Group ( Auto )</a></p>
 </div>
 
 <div class="card">
@@ -27,21 +27,13 @@
               </tr>
             </thead>
             <tbody>
+              {% for g in groups %}
               <tr>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
+                  <td><a href="{{ g.get_absolute_url }}">{{ g.name }}</a></td>
+                  <td>{{ g.description }}</td>
+                  <td>{{ g.author }}</td>
+                </tr>
+              {%  endfor %}
             </tbody>
           </table>
     </div>

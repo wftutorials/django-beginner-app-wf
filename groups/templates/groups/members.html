@@ -12,37 +12,27 @@
 
 <div class="card">
     <div class="card-header">
-      Featured
+      Featured Members
     </div>
     <div class="card-block">
         <table class="table">
             <thead>
               <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
+                <th>Member</th>
+                <th>Group</th>
+                <th>Active Since</th>
+                <th>Test</th>
               </tr>
             </thead>
             <tbody>
+              {% for m in members %}
               <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <td>{{ m.user }}</td>
+                <td>{{m.group }}</td>
+                <td>{{ m.created_at }}</td>
+                <td>{{ m.magic }}</td>
               </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
+              {% endfor %}
             </tbody>
           </table>
     </div>
