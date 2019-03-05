@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'index' %}">All Groups</a></li>
+      <li class="breadcrumb-item"><a href="{{ model.get_absolute_url }}">{{ model.name }}</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Edit Group</li>
+    </ol>
+  </nav>
+<h3>Edit {{ model.name }}</h3>
+<p>Use this form to create a new group</p>  
+<form action="{{ model.edit_url }}" method="post">
+  {% csrf_token %}
+  {{ form | crispy }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

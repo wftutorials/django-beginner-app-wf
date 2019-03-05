@@ -17,6 +17,12 @@ class Groups(models.Model):
     def get_absolute_url(self):
         return reverse('group_detail',args=[self.id])
 
+    def edit_url(self):
+        return reverse('edit_group',args=[self.id])
+
+    def delete_url(self):
+        return reverse('delete_group',args=[self.id])
+
 class Members(models.Model):
     group = models.ForeignKey(Groups, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)

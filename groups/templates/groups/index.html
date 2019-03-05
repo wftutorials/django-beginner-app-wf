@@ -24,6 +24,7 @@
                 <th>Group Name</th>
                 <th>Description</th>
                 <th>Author</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -32,6 +33,7 @@
                   <td><a href="{{ g.get_absolute_url }}">{{ g.name }}</a></td>
                   <td>{{ g.description }}</td>
                   <td>{{ g.author }}</td>
+                  <td><a href="{{ g.delete_url }}" class="btn btn-primary btn-sm">Delete</a></td>
                 </tr>
               {%  endfor %}
             </tbody>

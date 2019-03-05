@@ -12,5 +12,7 @@ urlpatterns = [
     path('create_member',views.create_member, name="create_member"),
     path('login',LoginView.as_view(template_name="groups/login.html"),name="group_login"),
     path('logout',LogoutView.as_view(),name="group_logout"),
-    path('group_detail/<id>/',views.group_detail,name="group_detail")
+    path('group_detail/<id>/',views.group_detail,name="group_detail"),
+    path('edit_group/<id>/',views.edit_group,name="edit_group"),
+    path('delete_group/<id>/',views.delete_group,name="delete_group")
 ]

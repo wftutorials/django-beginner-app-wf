@@ -83,3 +83,17 @@ def create_member(request):
 def group_detail(request, id):
     group = Groups.objects.get(pk=id)
     return render(request,'groups/group_detail.html',{'model':group})
+
+@login_required
+def edit_group(request, id):
+    group = Groups.objects.get(pk=id)
+    form = GroupForm(request.POST or None, instance=group)
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+    return render(request,'groups/edit_group.html',
+    {'form':form,'model':group})
+
+def delete_group(request, id):
+    Groups.objects.get(pk=id).delete()
+    return redirect("index")
