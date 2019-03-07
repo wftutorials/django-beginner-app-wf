@@ -94,6 +94,7 @@ def edit_group(request, id):
     return render(request,'groups/edit_group.html',
     {'form':form,'model':group})
 
+@login_required
 def delete_group(request, id):
     Groups.objects.get(pk=id).delete()
     return redirect("index")
